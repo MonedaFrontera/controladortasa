@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.AuditTarjeta" table="audit_tarjeta" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.AuditTarjetaId">
+            <key-property name="numerotarjeta" type="string">
+                <column name="numerotarjeta" length="16" />
+            </key-property>
+            <key-property name="bancoemisor" type="string">
+                <column name="bancoemisor" length="3" />
+            </key-property>
+            <key-property name="franquicia" type="string">
+                <column name="franquicia" length="1" />
+            </key-property>
+            <key-property name="documento" type="string">
+                <column name="documento" length="15" />
+            </key-property>
+            <key-property name="limite" type="int">
+                <column name="limite" precision="7" scale="0" />
+            </key-property>
+            <key-property name="fechainicio" type="timestamp">
+                <column name="fechainicio" length="29" />
+            </key-property>
+            <key-property name="fechafin" type="timestamp">
+                <column name="fechafin" length="29" />
+            </key-property>
+            <key-property name="fechavencimiento" type="string">
+                <column name="fechavencimiento" length="5" />
+            </key-property>
+            <key-property name="codseguridad" type="string">
+                <column name="codseguridad" length="4" />
+            </key-property>
+            <key-property name="tarjetahabiente" type="string">
+                <column name="tarjetahabiente" length="50" />
+            </key-property>
+            <key-property name="direcciontarjetahabiente" type="string">
+                <column name="direcciontarjetahabiente" length="150" />
+            </key-property>
+            <key-property name="cedulatarjetahabiente" type="string">
+                <column name="cedulatarjetahabiente" length="15" />
+            </key-property>
+            <key-property name="telefonotarjetahabiente" type="string">
+                <column name="telefonotarjetahabiente" length="15" />
+            </key-property>
+            <key-property name="fechamod" type="timestamp">
+                <column name="fechamod" length="22" />
+            </key-property>
+            <key-property name="usuariomod" type="string">
+                <column name="usuariomod" length="20" />
+            </key-property>
+            <key-property name="tac" type="java.lang.Boolean">
+                <column name="tac" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

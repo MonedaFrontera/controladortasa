@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Actestado" table="actestado" optimistic-lock="version">
+        <comment>Almacena los posibles estados de la activacion</comment>
+        <id name="codestado" type="string">
+            <column name="codestado" length="2" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="50">
+                <comment>Almacena la descripcion de los estados de la activacion</comment>
+            </column>
+        </property>
+        <set name="estadoactivacions" table="estadoactivacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="estado" length="2" not-null="true">
+                    <comment>Almacena el estado de la activacion</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Estadoactivacion" />
+        </set>
+        <set name="activacions" table="activacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="estado" length="2">
+                    <comment>Almacena el estado que tiene la activacion</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Activacion" />
+        </set>
+    </class>
+</hibernate-mapping>

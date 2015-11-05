@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Arrastrador" table="arrastrador" optimistic-lock="version">
+        <id name="documento" type="string">
+            <column name="documento" length="15" />
+            <generator class="foreign">
+                <param name="property">personal</param>
+            </generator>
+        </id>
+        <one-to-one name="personal" class="com.monedafrontera.dto.Personal" constrained="true"></one-to-one>
+        <set name="promotors" table="promotor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="arrastrador" length="15" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Promotor" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Vistasaldosabado" table="vistasaldosabado" optimistic-lock="version">
+        <comment>contiene los saldo de los promotores para el sabado de la semana anterior a la fecha actual</comment>
+        <composite-id name="id" class="com.monedafrontera.dto.VistasaldosabadoId">
+            <key-property name="docupromo" type="string">
+                <column name="docupromo" length="15" />
+            </key-property>
+            <key-property name="nombrepromo" type="string">
+                <column name="nombrepromo" />
+            </key-property>
+            <key-property name="asesora" type="string">
+                <column name="asesora" />
+            </key-property>
+            <key-property name="saldoCliente" type="big_decimal">
+                <column name="saldo_cliente" precision="131089" scale="0" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

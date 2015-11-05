@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Porcentajeparametrospromotor" table="porcentajeparametrospromotor" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.PorcentajeparametrospromotorId">
+            <key-property name="codbanco" type="string">
+                <column name="codbanco" length="3" />
+            </key-property>
+            <key-property name="codfranquicia" type="string">
+                <column name="codfranquicia" length="1" />
+            </key-property>
+            <key-property name="codpais" type="string">
+                <column name="codpais" length="5" />
+            </key-property>
+            <key-property name="documento" type="string">
+                <column name="documento" length="15" />
+            </key-property>
+            <key-property name="fechainicio" type="timestamp">
+                <column name="fechainicio" length="29" />
+            </key-property>
+        </composite-id>
+        <property name="fechafin" type="timestamp">
+            <column name="fechafin" length="29" />
+        </property>
+        <property name="porcentaje" type="java.lang.Short">
+            <column name="porcentaje" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Paridadmoneda" table="paridadmoneda" optimistic-lock="version">
+        <id name="fecha" type="date">
+            <column name="fecha" length="13" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="monedaByCodmonedadestino" class="com.monedafrontera.dto.Moneda" fetch="select">
+            <column name="codmonedadestino" length="5" />
+        </many-to-one>
+        <many-to-one name="monedaByCodmonedaorigen" class="com.monedafrontera.dto.Moneda" fetch="select">
+            <column name="codmonedaorigen" length="5" />
+        </many-to-one>
+        <property name="paridad" type="big_decimal">
+            <column name="paridad" precision="2">
+                <comment>La paridad monetaria, tambi&#233;n llamada paridad cambiaria, indica la relaci&#243;n que existe entre dos divisas, es decir, cuanto debo entregar de una
+                divisa para recibir una unidad de otra divisa.</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

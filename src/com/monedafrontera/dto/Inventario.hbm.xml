@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Inventario" table="inventario" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.InventarioId">
+            <key-property name="refproducto" type="string">
+                <column name="refproducto" length="20" />
+            </key-property>
+            <key-property name="codigounico" type="string">
+                <column name="codigounico" length="8" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="establecimiento" class="com.monedafrontera.dto.Establecimiento" update="false" insert="false" fetch="select">
+            <column name="codigounico" length="8" not-null="true" />
+        </many-to-one>
+        <many-to-one name="producto" class="com.monedafrontera.dto.Producto" update="false" insert="false" fetch="select">
+            <column name="refproducto" length="20" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="valor" type="big_decimal">
+            <column name="valor" precision="10" />
+        </property>
+        <property name="cantidad" type="big_decimal">
+            <column name="cantidad" precision="10" />
+        </property>
+        <property name="activo" type="java.lang.Boolean">
+            <column name="activo" />
+        </property>
+        <property name="prioridad" type="java.lang.Boolean">
+            <column name="prioridad" />
+        </property>
+        <set name="detallefacturas" table="detallefactura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="refproducto" length="20" not-null="true" />
+                <column name="codigounico" length="8" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Detallefactura" />
+        </set>
+    </class>
+</hibernate-mapping>

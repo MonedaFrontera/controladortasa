@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Cuentapromotor" table="cuentapromotor" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.CuentapromotorId">
+            <key-property name="numcuenta" type="string">
+                <column name="numcuenta" length="25" />
+            </key-property>
+            <key-property name="documento" type="string">
+                <column name="documento" length="15" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="banco" class="com.monedafrontera.dto.Banco" fetch="select">
+            <column name="codbanco" length="3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="promotor" class="com.monedafrontera.dto.Promotor" update="false" insert="false" fetch="select">
+            <column name="documento" length="15" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" />
+        </property>
+        <set name="transferencias" table="transferencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numcuentapromotor" length="25" />
+                <column name="documentopromotor" length="15" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Transferencia" />
+        </set>
+    </class>
+</hibernate-mapping>

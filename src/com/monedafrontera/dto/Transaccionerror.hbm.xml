@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Transaccionerror" table="transaccionerror" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.TransaccionerrorId">
+            <key-property name="numerotarjeta" type="string">
+                <column name="numerotarjeta" length="16" />
+            </key-property>
+            <key-property name="codigounico" type="string">
+                <column name="codigounico" length="8" />
+            </key-property>
+            <key-property name="fechatx" type="timestamp">
+                <column name="fechatx" length="29" />
+            </key-property>
+            <key-property name="tipotx" type="string">
+                <column name="tipotx" length="1" />
+            </key-property>
+            <key-property name="numfactura" type="string">
+                <column name="numfactura" length="10" />
+            </key-property>
+            <key-property name="fechamod" type="timestamp">
+                <column name="fechamod" length="29" />
+            </key-property>
+            <key-property name="usuariomod" type="string">
+                <column name="usuariomod" length="15" />
+            </key-property>
+            <key-property name="asesor" type="string">
+                <column name="asesor" length="15" />
+            </key-property>
+            <key-property name="promotor" type="string">
+                <column name="promotor" length="15" />
+            </key-property>
+            <key-property name="digitador" type="string">
+                <column name="digitador" length="15" />
+            </key-property>
+            <key-property name="error" type="string">
+                <column name="error" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

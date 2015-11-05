@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Franquiciaestablecimiento" table="franquiciaestablecimiento" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.FranquiciaestablecimientoId">
+            <key-property name="establecimiento" type="string">
+                <column name="establecimiento" length="8" />
+            </key-property>
+            <key-property name="franquicia" type="string">
+                <column name="franquicia" length="1" />
+            </key-property>
+        </composite-id>
+        <property name="porcentaje" type="big_decimal">
+            <column name="porcentaje" precision="3" />
+        </property>
+    </class>
+</hibernate-mapping>

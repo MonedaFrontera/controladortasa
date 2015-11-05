@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Gravamenestablecimiento" table="gravamenestablecimiento" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.GravamenestablecimientoId">
+            <key-property name="codigounico" type="string">
+                <column name="codigounico" length="8" />
+            </key-property>
+            <key-property name="gravamen" type="string">
+                <column name="gravamen" length="2" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="establecimiento" class="com.monedafrontera.dto.Establecimiento" update="false" insert="false" fetch="select">
+            <column name="codigounico" length="8" not-null="true" />
+        </many-to-one>
+        <many-to-one name="gravamen" class="com.monedafrontera.dto.Gravamen" update="false" insert="false" fetch="select">
+            <column name="gravamen" length="2" not-null="true" />
+        </many-to-one>
+        <property name="porcentaje" type="big_decimal">
+            <column name="porcentaje" precision="5" scale="3" />
+        </property>
+        <property name="iva" type="java.lang.Boolean">
+            <column name="iva" />
+        </property>
+        <property name="activo" type="java.lang.Boolean">
+            <column name="activo" />
+        </property>
+    </class>
+</hibernate-mapping>

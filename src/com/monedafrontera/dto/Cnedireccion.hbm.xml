@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Cnedireccion" table="cnedireccion" optimistic-lock="version">
+        <id name="codCentro" type="string">
+            <column name="cod_centro" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="tipo" type="string">
+            <column name="tipo" length="3" />
+        </property>
+        <property name="codEstado" type="string">
+            <column name="cod_estado" length="3" />
+        </property>
+        <property name="codMunicipio" type="string">
+            <column name="cod_municipio" length="3" />
+        </property>
+        <property name="codParroquia" type="string">
+            <column name="cod_parroquia" length="3" />
+        </property>
+        <property name="nombreCentro" type="string">
+            <column name="nombre_centro" length="300" />
+        </property>
+        <property name="direccionCentro" type="string">
+            <column name="direccion_centro" length="300" />
+        </property>
+        <property name="centroNuevo" type="string">
+            <column name="centro_nuevo" length="15" />
+        </property>
+    </class>
+</hibernate-mapping>

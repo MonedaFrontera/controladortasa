@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Tasabolivartransferpais" table="tasabolivartransferpais" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.TasabolivartransferpaisId">
+            <key-property name="fecha" type="timestamp">
+                <column name="fecha" length="22" />
+            </key-property>
+            <key-property name="codigopais" type="string">
+                <column name="codigopais" length="5" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="paisiso" class="com.monedafrontera.dto.Paisiso" update="false" insert="false" fetch="select">
+            <column name="codigopais" length="5" not-null="true" />
+        </many-to-one>
+        <property name="preciobolivar" type="big_decimal">
+            <column name="preciobolivar" precision="8" />
+        </property>
+    </class>
+</hibernate-mapping>

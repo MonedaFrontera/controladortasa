@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Viaje" table="viaje" optimistic-lock="version">
+        <id name="consecutivo" type="int">
+            <column name="consecutivo" />
+            <generator class="assigned" />
+        </id>
+        <property name="fechainicio" type="date">
+            <column name="fechainicio" length="13" />
+        </property>
+        <property name="fechafin" type="date">
+            <column name="fechafin" length="13" />
+        </property>
+        <property name="cupoinicialviajero" type="java.lang.Integer">
+            <column name="cupoinicialviajero" precision="8" scale="0" />
+        </property>
+        <property name="cupoinicialinternet" type="java.lang.Integer">
+            <column name="cupoinicialinternet" precision="8" scale="0" />
+        </property>
+        <property name="cupoviajero" type="java.lang.Integer">
+            <column name="cupoviajero" precision="8" scale="0" />
+        </property>
+        <property name="cupointernet" type="java.lang.Integer">
+            <column name="cupointernet" precision="8" scale="0" />
+        </property>
+        <property name="cedulatarjetahabiente" type="string">
+            <column name="cedulatarjetahabiente" length="15" />
+        </property>
+        <property name="fechamod" type="timestamp">
+            <column name="fechamod" length="29" />
+        </property>
+        <property name="usuariomod" type="string">
+            <column name="usuariomod" length="15" />
+        </property>
+        <set name="auditTarjetaviajes" table="audit_tarjetaviaje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="consecutivoviaje" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.AuditTarjetaviaje" />
+        </set>
+        <set name="tarjetaviajes" table="tarjetaviaje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="consecutivoviaje" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tarjetaviaje" />
+        </set>
+        <set name="activacions" table="activaviaje" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="consviaje" not-null="true">
+                    <comment>Almacena el numero del viaje el cual fue generado de la activacion</comment>
+                </column>
+            </key>
+            <many-to-many entity-name="com.monedafrontera.dto.Activacion">
+                <column name="consactivacion" not-null="true">
+                    <comment>Almacena el numero de la activacion</comment>
+                </column>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

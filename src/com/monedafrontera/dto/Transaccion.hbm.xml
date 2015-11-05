@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Transaccion" table="transaccion" optimistic-lock="version">
+        <id name="consecutivo" type="int">
+            <column name="consecutivo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="establecimiento" class="com.monedafrontera.dto.Establecimiento" fetch="select">
+            <column name="codigounico" length="8" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tarjeta" class="com.monedafrontera.dto.Tarjeta" fetch="select">
+            <column name="numerotarjeta" length="16" not-null="true" />
+        </many-to-one>
+        <property name="fechatx" type="timestamp">
+            <column name="fechatx" length="29" not-null="true" />
+        </property>
+        <property name="tipotx" type="string">
+            <column name="tipotx" length="1" />
+        </property>
+        <property name="valortxpesos" type="big_decimal">
+            <column name="valortxpesos" precision="10" />
+        </property>
+        <property name="valortxdolares" type="big_decimal">
+            <column name="valortxdolares" precision="10" />
+        </property>
+        <property name="numfactura" type="string">
+            <column name="numfactura" length="10" />
+        </property>
+        <property name="valorcomision" type="big_decimal">
+            <column name="valorcomision" precision="10" />
+        </property>
+        <property name="asesorcomision" type="big_decimal">
+            <column name="asesorcomision" precision="10" />
+        </property>
+        <property name="arrastradorcomision" type="big_decimal">
+            <column name="arrastradorcomision" precision="10" />
+        </property>
+        <property name="establecimientocomision" type="big_decimal">
+            <column name="establecimientocomision" precision="10" />
+        </property>
+        <property name="porcentajecomision" type="big_decimal">
+            <column name="porcentajecomision" precision="5" scale="3" />
+        </property>
+        <property name="fechamod" type="timestamp">
+            <column name="fechamod" length="29" />
+        </property>
+        <property name="usuariomod" type="string">
+            <column name="usuariomod" length="15" />
+        </property>
+        <property name="asesor" type="string">
+            <column name="asesor" length="15" />
+        </property>
+        <property name="promotor" type="string">
+            <column name="promotor" length="15" />
+        </property>
+        <property name="arrastrador" type="string">
+            <column name="arrastrador" length="15" />
+        </property>
+        <property name="digitador" type="string">
+            <column name="digitador" length="15" />
+        </property>
+        <property name="valortxeuros" type="big_decimal">
+            <column name="valortxeuros" precision="10">
+                <comment>Valor en euros de la transaccion para Tx que se hagan por europa</comment>
+            </column>
+        </property>
+        <property name="paridad" type="big_decimal">
+            <column name="paridad" precision="3">
+                <comment>Persistencia redundante de la paridad entre moneda para el caso de los euros. Esta redundancia se usa para reportes.</comment>
+            </column>
+        </property>
+        <set name="deduccioneses" table="deducciones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="consecutivo" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Deducciones" />
+        </set>
+        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="consecutivo" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Factura" />
+        </set>
+        <set name="bauchers" table="baucher" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="consecutivo" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Baucher" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Observacion" table="observacion" optimistic-lock="version">
+        <comment>Almacena la informacion de las observaciones que se realizan sobre las activaciones</comment>
+        <composite-id name="id" class="com.monedafrontera.dto.ObservacionId">
+            <key-property name="consecutivo" type="int">
+                <column name="consecutivo" />
+            </key-property>
+            <key-property name="fecha" type="timestamp">
+                <column name="fecha" length="29" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="activacion" class="com.monedafrontera.dto.Activacion" update="false" insert="false" fetch="select">
+            <column name="consecutivo" not-null="true">
+                <comment>Almacena el numero de consecutivo de la activacion</comment>
+            </column>
+        </many-to-one>
+        <property name="observacion" type="string">
+            <column name="observacion" length="2000">
+                <comment>Almacena el texto de la observacion que se realiza</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

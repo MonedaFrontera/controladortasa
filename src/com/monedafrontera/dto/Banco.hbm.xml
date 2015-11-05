@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Banco" table="banco" optimistic-lock="version">
+        <id name="codbanco" type="string">
+            <column name="codbanco" length="3" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombrebanco" type="string">
+            <column name="nombrebanco" length="50" not-null="true" />
+        </property>
+        <property name="dias" type="java.lang.Byte">
+            <column name="dias" precision="2" scale="0" />
+        </property>
+        <property name="activo" type="java.lang.Boolean">
+            <column name="activo">
+                <comment>Este campo se usa para marcar el banco como disponible o no.</comment>
+            </column>
+        </property>
+        <set name="tasaeuropromotorparametros" table="tasaeuropromotorparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codbanco" length="3">
+                    <comment>Codigo del banco negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasaeuropromotorparametro" />
+        </set>
+        <set name="tasadolarparametros" table="tasadolarparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codbanco" length="3">
+                    <comment>Codigo del banco negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasadolarparametro" />
+        </set>
+        <set name="cuentapromotors" table="cuentapromotor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codbanco" length="3" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Cuentapromotor" />
+        </set>
+        <set name="porcentajecomisiontxparams" table="porcentajecomisiontxparam" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codbanco" length="3">
+                    <comment>Codigo del banco negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Porcentajecomisiontxparam" />
+        </set>
+        <set name="tasadolarpromotorparametros" table="tasadolarpromotorparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codbanco" length="3">
+                    <comment>Codigo del banco negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasadolarpromotorparametro" />
+        </set>
+        <set name="porcentcomisiontxparampromos" table="porcentcomisiontxparampromo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codbanco" length="3">
+                    <comment>Codigo del banco negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Porcentcomisiontxparampromo" />
+        </set>
+        <set name="tarjetas" table="tarjeta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bancoemisor" length="3" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tarjeta" />
+        </set>
+        <set name="tasaeuroparametros" table="tasaeuroparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codbanco" length="3">
+                    <comment>Codigo del banco negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasaeuroparametro" />
+        </set>
+        <set name="cuentas" table="cuenta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codbanco" length="3" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Cuenta" />
+        </set>
+        <set name="activacions" table="activacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codbanco" length="3">
+                    <comment>Almacena el codigo del banco del viaje al cual pertenece la activacion</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Activacion" />
+        </set>
+    </class>
+</hibernate-mapping>

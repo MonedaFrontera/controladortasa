@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Detallefactura" table="detallefactura" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.DetallefacturaId">
+            <key-property name="numfactura" type="string">
+                <column name="numfactura" length="10" />
+            </key-property>
+            <key-property name="refproducto" type="string">
+                <column name="refproducto" length="20" />
+            </key-property>
+            <key-property name="codigounico" type="string">
+                <column name="codigounico" length="8" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="factura" class="com.monedafrontera.dto.Factura" update="false" insert="false" fetch="select">
+            <column name="numfactura" length="10" not-null="true" />
+            <column name="codigounico" length="8" not-null="true" />
+        </many-to-one>
+        <many-to-one name="inventario" class="com.monedafrontera.dto.Inventario" update="false" insert="false" fetch="select">
+            <column name="refproducto" length="20" not-null="true" />
+            <column name="codigounico" length="8" not-null="true" />
+        </many-to-one>
+        <property name="cantidad" type="java.lang.Short">
+            <column name="cantidad" precision="4" scale="0" />
+        </property>
+        <property name="valor" type="java.lang.Long">
+            <column name="valor" precision="10" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Saldo" table="saldo" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.SaldoId">
+            <key-property name="documento" type="string">
+                <column name="documento" length="15" />
+            </key-property>
+            <key-property name="fecha" type="date">
+                <column name="fecha" length="13" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="personal" class="com.monedafrontera.dto.Personal" update="false" insert="false" fetch="select">
+            <column name="documento" length="15" not-null="true" />
+        </many-to-one>
+        <property name="saldo" type="big_decimal">
+            <column name="saldo" precision="15" />
+        </property>
+        <property name="usuariomod" type="string">
+            <column name="usuariomod" length="15" />
+        </property>
+        <property name="fechamod" type="date">
+            <column name="fechamod" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

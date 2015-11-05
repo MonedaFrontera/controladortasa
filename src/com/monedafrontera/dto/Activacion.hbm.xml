@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Activacion" table="activacion" optimistic-lock="version">
+        <comment>Almacena la informacion de las activaciones</comment>
+        <id name="consecutivo" type="int">
+            <column name="consecutivo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="actestado" class="com.monedafrontera.dto.Actestado" fetch="select">
+            <column name="estado" length="2">
+                <comment>Almacena el estado que tiene la activacion</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="banco" class="com.monedafrontera.dto.Banco" fetch="select">
+            <column name="codbanco" length="3">
+                <comment>Almacena el codigo del banco del viaje al cual pertenece la activacion</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="gestor" class="com.monedafrontera.dto.Gestor" fetch="select">
+            <column name="gestor" length="15">
+                <comment>Almacena el documento del gestor actual que tiene asignada la activacion</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="promotor" class="com.monedafrontera.dto.Promotor" fetch="select">
+            <column name="promotor" length="15">
+                <comment>Almacena el numero de documento del promotor que envia la activacion</comment>
+            </column>
+        </many-to-one>
+        <property name="cedula" type="string">
+            <column name="cedula" length="15">
+                <comment>Almacena el numero de cedula del tarjetahabiente para realizar la activacion del viaje</comment>
+            </column>
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50">
+                <comment>Almacena el nombre del tarjetahabiente</comment>
+            </column>
+        </property>
+        <property name="fechareg" type="timestamp">
+            <column name="fechareg" length="29">
+                <comment>Almacena la fecha en que se ingreso el registro al sistema</comment>
+            </column>
+        </property>
+        <property name="usuarioreg" type="string">
+            <column name="usuarioreg" length="20">
+                <comment>Almacena el usuario que ingreso el registro al sistema</comment>
+            </column>
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="50">
+                <comment>Almacena el correo electronico utilizado para inrgesar a la pagina de CADIVI</comment>
+            </column>
+        </property>
+        <property name="clave" type="string">
+            <column name="clave" length="50">
+                <comment>Almacena la clave para ingresar a la pagina de CADIVI</comment>
+            </column>
+        </property>
+        <property name="usuario" type="string">
+            <column name="usuario" length="50" />
+        </property>
+        <property name="llave" type="string">
+            <column name="llave" length="50">
+                <comment>Almacena la llave Mercantil</comment>
+            </column>
+        </property>
+        <property name="ano" type="java.lang.Integer">
+            <column name="ano">
+                <comment>Almacena el periodo o ano sobre el cual se desea activar el viaje</comment>
+            </column>
+        </property>
+        <property name="usuariomod" type="string">
+            <column name="usuariomod" length="20">
+                <comment>Almacena el usuario que realizo la ultima modificacion o acceso al registro</comment>
+            </column>
+        </property>
+        <property name="fechacita" type="timestamp">
+            <column name="fechacita" length="29">
+                <comment>Almacena la fecha de la cita actual</comment>
+            </column>
+        </property>
+        <property name="fechaact" type="timestamp">
+            <column name="fechaact" length="29" />
+        </property>
+        <property name="fechamod" type="timestamp">
+            <column name="fechamod" length="29" />
+        </property>
+        <property name="ingresocadivi" type="java.lang.Boolean">
+            <column name="ingresocadivi" />
+        </property>
+        <property name="documentoscompletos" type="java.lang.Boolean">
+            <column name="documentoscompletos" />
+        </property>
+        <property name="citaasignada" type="java.lang.Boolean">
+            <column name="citaasignada" />
+        </property>
+        <property name="agencia" type="string">
+            <column name="agencia" length="100" />
+        </property>
+        <property name="tipoviaje" type="string">
+            <column name="tipoviaje" length="10" />
+        </property>
+        <property name="fechainicioviaje" type="timestamp">
+            <column name="fechainicioviaje" length="29">
+                <comment>Almacena la fecha de inicio del viaje solo debe tener valores si el estado de la actviacion es completa</comment>
+            </column>
+        </property>
+        <property name="fechafinviaje" type="timestamp">
+            <column name="fechafinviaje" length="29">
+                <comment>Almacena la fecha fin de viaje esta informacion solo con el estado de activacion completa</comment>
+            </column>
+        </property>
+        <property name="clavemercantil" type="string">
+            <column name="clavemercantil" length="50">
+                <comment>Almacena la clave mercantil</comment>
+            </column>
+        </property>
+        <property name="coordenadas" type="java.lang.Boolean">
+            <column name="coordenadas">
+                <comment>Almacena las coordenadas que se necesiten de algun banco incialmente de provincial</comment>
+            </column>
+        </property>
+        <property name="provinet" type="string">
+            <column name="provinet" length="50">
+                <comment>Almacena el nro de tc de provinet</comment>
+            </column>
+        </property>
+        <property name="claveprovinet" type="string">
+            <column name="claveprovinet" length="50">
+                <comment>Almacena la clave de provinet</comment>
+            </column>
+        </property>
+        <property name="rusad" type="java.lang.Boolean">
+            <column name="rusad">
+                <comment>Activaciones Banesco solo rusad</comment>
+            </column>
+        </property>
+        <property name="noingresacadivi" type="java.lang.Boolean">
+            <column name="noingresacadivi">
+                <comment>Confirma que no ingresa a cadivi, a diferencia de "ingreso a cadivi", este solo esta cuando no ingresa a cadivi y se intento ingresar</comment>
+            </column>
+        </property>
+        <property name="rif" type="java.lang.Boolean">
+            <column name="rif">
+                <comment>Confirma si la activacion tiene rif</comment>
+            </column>
+        </property>
+        <property name="deposito" type="string">
+            <column name="deposito" length="40" />
+        </property>
+        <property name="fechadeposito" type="timestamp">
+            <column name="fechadeposito" length="22" />
+        </property>
+        <property name="valordeposito" type="big_decimal">
+            <column name="valordeposito" precision="6" />
+        </property>
+        <property name="fechadevolucion" type="timestamp">
+            <column name="fechadevolucion" length="22" />
+        </property>
+        <property name="valordevolucion" type="big_decimal">
+            <column name="valordevolucion" precision="6" />
+        </property>
+        <property name="erroringresocadivi" type="java.lang.Boolean">
+            <column name="erroringresocadivi">
+                <comment>almacena intento de ingreso fallido a la plataforma de CADIVI</comment>
+            </column>
+        </property>
+        <property name="cupoaprobado" type="java.lang.Integer">
+            <column name="cupoaprobado" precision="8" scale="0">
+                <comment>Valor del cupo aprobado para el viaje</comment>
+            </column>
+        </property>
+        <property name="usuariobanco" type="string">
+            <column name="usuariobanco" length="20">
+                <comment>Este campo contiene el usuario de acceso a la banca en linea del tarjetahabiente.</comment>
+            </column>
+        </property>
+        <property name="ingresobancalinea" type="java.lang.Boolean">
+            <column name="ingresobancalinea">
+                <comment>si ingreso a la banca en linea de la activacion</comment>
+            </column>
+        </property>
+        <property name="noingresobancalinea" type="java.lang.Boolean">
+            <column name="noingresobancalinea">
+                <comment>no ingresa a la banca en linea de la activacion</comment>
+            </column>
+        </property>
+        <property name="destino" type="java.lang.Integer">
+            <column name="destino" />
+        </property>
+        <set name="erroringresocadivis" table="erroringresocadivi" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="consecutivo" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Erroringresocadivi" />
+        </set>
+        <set name="estadoactivacions" table="estadoactivacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="consecutivo" not-null="true">
+                    <comment>Almacena el numero del consecutivo de la activacion</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Estadoactivacion" />
+        </set>
+        <set name="citas" table="cita" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="consecutivo" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Cita" />
+        </set>
+        <set name="activagestors" table="activagestor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="consecutivo" not-null="true">
+                    <comment>Almacena el numero de la activacion</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Activagestor" />
+        </set>
+        <set name="observacions" table="observacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="consecutivo" not-null="true">
+                    <comment>Almacena el numero de consecutivo de la activacion</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Observacion" />
+        </set>
+        <set name="viajes" table="activaviaje" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="consactivacion" not-null="true">
+                    <comment>Almacena el numero de la activacion</comment>
+                </column>
+            </key>
+            <many-to-many entity-name="com.monedafrontera.dto.Viaje">
+                <column name="consviaje" not-null="true">
+                    <comment>Almacena el numero del viaje el cual fue generado de la activacion</comment>
+                </column>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

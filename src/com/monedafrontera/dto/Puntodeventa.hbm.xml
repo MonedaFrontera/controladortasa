@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Puntodeventa" table="puntodeventa" optimistic-lock="version">
+        <id name="codpuntoventa" type="string">
+            <column name="codpuntoventa" length="1" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" />
+        </property>
+        <set name="puntoestablecimientos" table="puntoestablecimiento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codpuntoventa" length="1" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Puntoestablecimiento" />
+        </set>
+    </class>
+</hibernate-mapping>

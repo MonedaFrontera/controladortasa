@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Establecimientoprecio" table="establecimientoprecio" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.EstablecimientoprecioId">
+            <key-property name="codigounico" type="string">
+                <column name="codigounico" length="8" />
+            </key-property>
+            <key-property name="fechainicio" type="timestamp">
+                <column name="fechainicio" length="22" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="establecimiento" class="com.monedafrontera.dto.Establecimiento" update="false" insert="false" fetch="select">
+            <column name="codigounico" length="8" not-null="true">
+                <comment>Codigo unico del establecimiento</comment>
+            </column>
+        </many-to-one>
+        <property name="fechafin" type="timestamp">
+            <column name="fechafin" length="29" />
+        </property>
+        <property name="dolaroficina" type="big_decimal">
+            <column name="dolaroficina" precision="6">
+                <comment>Es el precio de dolar de costo del establecimiento</comment>
+            </column>
+        </property>
+        <property name="porcentajeoficina" type="big_decimal">
+            <column name="porcentajeoficina" precision="5">
+                <comment>Es el porcentaje de costo del establecimiento para la oficina</comment>
+            </column>
+        </property>
+        <property name="paridad" type="big_decimal">
+            <column name="paridad" precision="5">
+                <comment>Es el valor de la paridad de la moneda que se aplica para los establecimientos que no facturan en dolares Ej. Paises de Europa</comment>
+            </column>
+        </property>
+        <property name="paridadcliente" type="big_decimal">
+            <column name="paridadcliente" precision="5">
+                <comment>Paridad cambiaria para el cliente.</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

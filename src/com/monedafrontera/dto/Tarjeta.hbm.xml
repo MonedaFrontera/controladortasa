@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Tarjeta" table="tarjeta" optimistic-lock="version">
+        <id name="numerotarjeta" type="string">
+            <column name="numerotarjeta" length="16" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="banco" class="com.monedafrontera.dto.Banco" fetch="select">
+            <column name="bancoemisor" length="3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="franquicia" class="com.monedafrontera.dto.Franquicia" fetch="select">
+            <column name="franquicia" length="1" not-null="true" />
+        </many-to-one>
+        <many-to-one name="promotor" class="com.monedafrontera.dto.Promotor" fetch="select">
+            <column name="documento" length="15" not-null="true" />
+        </many-to-one>
+        <property name="limite" type="int">
+            <column name="limite" precision="7" scale="0" not-null="true" />
+        </property>
+        <property name="fechainicio" type="timestamp">
+            <column name="fechainicio" length="29" />
+        </property>
+        <property name="fechafin" type="timestamp">
+            <column name="fechafin" length="29" />
+        </property>
+        <property name="fechavencimiento" type="string">
+            <column name="fechavencimiento" length="5" not-null="true" />
+        </property>
+        <property name="codseguridad" type="string">
+            <column name="codseguridad" length="4" not-null="true" />
+        </property>
+        <property name="tarjetahabiente" type="string">
+            <column name="tarjetahabiente" length="50" not-null="true" />
+        </property>
+        <property name="direcciontarjetahabiente" type="string">
+            <column name="direcciontarjetahabiente" length="200" not-null="true" />
+        </property>
+        <property name="cedulatarjetahabiente" type="string">
+            <column name="cedulatarjetahabiente" length="15" not-null="true" />
+        </property>
+        <property name="telefonotarjetahabiente" type="string">
+            <column name="telefonotarjetahabiente" length="15" not-null="true" />
+        </property>
+        <property name="fechamod" type="timestamp">
+            <column name="fechamod" length="29" />
+        </property>
+        <property name="usuariomod" type="string">
+            <column name="usuariomod" length="20" />
+        </property>
+        <property name="tac" type="java.lang.Boolean">
+            <column name="tac">
+                <comment>Atributo que determina si una tarjeta es TAC</comment>
+            </column>
+        </property>
+        <set name="autovozs" table="autovoz" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numerotarjeta" length="16" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Autovoz" />
+        </set>
+        <set name="transaccions" table="transaccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numerotarjeta" length="16" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Transaccion" />
+        </set>
+        <set name="depositostarjetas" table="depositostarjeta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numerotarjeta" length="16" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Depositostarjeta" />
+        </set>
+        <set name="tarjetaviajes" table="tarjetaviaje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numerotarjeta" length="16" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tarjetaviaje" />
+        </set>
+        <set name="saldodepositoses" table="saldodepositos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numerotarjeta" length="16" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Saldodepositos" />
+        </set>
+        <set name="auditTarjetaviajes" table="audit_tarjetaviaje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numerotarjeta" length="16" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.AuditTarjetaviaje" />
+        </set>
+    </class>
+</hibernate-mapping>

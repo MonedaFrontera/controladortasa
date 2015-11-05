@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Paisiso" table="paisiso" optimistic-lock="version">
+        <id name="codigopais" type="string">
+            <column name="codigopais" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombrepaisEs" type="string">
+            <column name="nombrepais_es" length="200">
+                <comment>Nombre del pais en espanol</comment>
+            </column>
+        </property>
+        <property name="nombrepaisEn" type="string">
+            <column name="nombrepais_en" length="200">
+                <comment>Nombre del pais en ingles</comment>
+            </column>
+        </property>
+        <property name="capital" type="string">
+            <column name="capital" length="200" />
+        </property>
+        <property name="nombrecompletoEn" type="string">
+            <column name="nombrecompleto_en" length="200">
+                <comment>Nombre completo del pais</comment>
+            </column>
+        </property>
+        <property name="codigopaisNumero" type="string">
+            <column name="codigopais_numero" length="4" />
+        </property>
+        <property name="codigo31663Es" type="string">
+            <column name="codigo3166_3_es" length="5">
+                <comment>Almacena el Codigo 3166 tipo 2 en espanol</comment>
+            </column>
+        </property>
+        <property name="codigomoneda" type="string">
+            <column name="codigomoneda" length="5">
+                <comment>Almacena el codigo de la moneda segun el estandar ISO 4217</comment>
+            </column>
+        </property>
+        <property name="nombreMoneda" type="string">
+            <column name="nombre_moneda" length="60">
+                <comment>Nombre de la moneda segun el estandar ISO 4217</comment>
+            </column>
+        </property>
+        <property name="pathBanderaRelativo" type="string">
+            <column name="path_bandera_relativo" length="60">
+                <comment>Path relativo de la imagen de la bandera</comment>
+            </column>
+        </property>
+        <property name="pathBanderaAbsoluta" type="string">
+            <column name="path_bandera_absoluta" length="60" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="estado" precision="1" scale="0">
+                <comment>Determina si el pais esta activo</comment>
+            </column>
+        </property>
+        <property name="pathBanderasExtracto" type="string">
+            <column name="path_banderas_extracto" length="70" />
+        </property>
+        <property name="pathBanderaGui" type="string">
+            <column name="path_bandera_gui" length="60" />
+        </property>
+        <set name="tasabolivartransferpaises" table="tasabolivartransferpais" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigopais" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasabolivartransferpais" />
+        </set>
+        <set name="paises" table="pais" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigopaisiso" length="5" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Pais" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Pais" table="pais" optimistic-lock="version">
+        <id name="codigopais" type="string">
+            <column name="codigopais" length="5" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="paisiso" class="com.monedafrontera.dto.Paisiso" fetch="select">
+            <column name="codigopaisiso" length="5" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="25" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="estado" precision="1" scale="0">
+                <comment>Determina si el comercio esta activo</comment>
+            </column>
+        </property>
+        <set name="tasaeuroparametros" table="tasaeuroparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codpais" length="5">
+                    <comment>Almacena el codigo del pais</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasaeuroparametro" />
+        </set>
+        <set name="promotorcomisiontxes" table="promotorcomisiontx" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codpais" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Promotorcomisiontx" />
+        </set>
+        <set name="promotortasas" table="promotortasa" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigopais" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Promotortasa" />
+        </set>
+        <set name="tasaeuropromotorparametros" table="tasaeuropromotorparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codpais" length="5">
+                    <comment>Almacena el codigo del pais</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasaeuropromotorparametro" />
+        </set>
+        <set name="porcentajecomisiontxes" table="porcentajecomisiontx" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codpais" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Porcentajecomisiontx" />
+        </set>
+        <set name="porcentcomisiontxparampromos" table="porcentcomisiontxparampromo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codpais" length="5">
+                    <comment>Almacena el codigo del pais</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Porcentcomisiontxparampromo" />
+        </set>
+        <set name="tasadolarparametros" table="tasadolarparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codpais" length="5">
+                    <comment>Almacena el codigo del pais</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasadolarparametro" />
+        </set>
+        <set name="establecimientos" table="establecimiento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codpais" length="5" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Establecimiento" />
+        </set>
+        <set name="tasadolarpromotorparametros" table="tasadolarpromotorparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codpais" length="5">
+                    <comment>Almacena el codigo del pais</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasadolarpromotorparametro" />
+        </set>
+        <set name="porcentajecomisiontxparams" table="porcentajecomisiontxparam" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codpais" length="5">
+                    <comment>Almacena el codigo del pais</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Porcentajecomisiontxparam" />
+        </set>
+        <set name="tasadolars" table="tasadolar" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigopais" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasadolar" />
+        </set>
+    </class>
+</hibernate-mapping>

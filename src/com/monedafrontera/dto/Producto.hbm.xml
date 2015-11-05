@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Producto" table="producto" optimistic-lock="version">
+        <id name="refproducto" type="string">
+            <column name="refproducto" length="20" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreproducto" type="string">
+            <column name="nombreproducto" length="50" />
+        </property>
+        <property name="marca" type="string">
+            <column name="marca" length="20" />
+        </property>
+        <property name="valorminimo" type="java.lang.Integer">
+            <column name="valorminimo" precision="8" scale="0" />
+        </property>
+        <property name="valormaximo" type="java.lang.Integer">
+            <column name="valormaximo" precision="8" scale="0" />
+        </property>
+        <property name="cantminimo" type="java.lang.Short">
+            <column name="cantminimo" precision="3" scale="0" />
+        </property>
+        <property name="cantmaximo" type="java.lang.Short">
+            <column name="cantmaximo" precision="3" scale="0" />
+        </property>
+        <property name="porcentaje" type="java.lang.Short">
+            <column name="porcentaje" />
+        </property>
+        <set name="inventarios" table="inventario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="refproducto" length="20" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Inventario" />
+        </set>
+    </class>
+</hibernate-mapping>

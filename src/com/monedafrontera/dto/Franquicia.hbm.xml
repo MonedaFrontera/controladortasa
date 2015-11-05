@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Franquicia" table="franquicia" optimistic-lock="version">
+        <id name="codfranquicia" type="string">
+            <column name="codfranquicia" length="1" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombrefranquicia" type="string">
+            <column name="nombrefranquicia" length="50" not-null="true" />
+        </property>
+        <property name="porcentaje" type="big_decimal">
+            <column name="porcentaje" precision="5" scale="3" />
+        </property>
+        <set name="tasadolarpromotorparametros" table="tasadolarpromotorparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codfranquicia" length="1">
+                    <comment>Codigo de la franquicia negociada</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasadolarpromotorparametro" />
+        </set>
+        <set name="porcentajecomisiontxparams" table="porcentajecomisiontxparam" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codfranquicia" length="1">
+                    <comment>Codigo de la franquicia negociada</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Porcentajecomisiontxparam" />
+        </set>
+        <set name="tasaeuroparametros" table="tasaeuroparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codfranquicia" length="1">
+                    <comment>Codigo de la franquicia negociada</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasaeuroparametro" />
+        </set>
+        <set name="tasaeuropromotorparametros" table="tasaeuropromotorparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codfranquicia" length="1">
+                    <comment>Codigo de la franquicia negociada</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasaeuropromotorparametro" />
+        </set>
+        <set name="tasadolarparametros" table="tasadolarparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codfranquicia" length="1">
+                    <comment>Codigo de la franquicia negociada</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasadolarparametro" />
+        </set>
+        <set name="porcentcomisiontxparampromos" table="porcentcomisiontxparampromo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codfranquicia" length="1">
+                    <comment>Codigo de la franquicia negociada</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Porcentcomisiontxparampromo" />
+        </set>
+        <set name="tarjetas" table="tarjeta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="franquicia" length="1" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tarjeta" />
+        </set>
+        <set name="promotorfranquicias" table="promotorfranquicia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codfranquicia" length="1" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Promotorfranquicia" />
+        </set>
+    </class>
+</hibernate-mapping>

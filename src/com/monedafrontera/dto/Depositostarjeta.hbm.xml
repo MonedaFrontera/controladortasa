@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Depositostarjeta" table="depositostarjeta" optimistic-lock="version">
+        <id name="consecutivo" type="int">
+            <column name="consecutivo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cuenta" class="com.monedafrontera.dto.Cuenta" fetch="select">
+            <column name="numcuenta" length="25" />
+        </many-to-one>
+        <many-to-one name="tarjeta" class="com.monedafrontera.dto.Tarjeta" fetch="select">
+            <column name="numerotarjeta" length="16" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="29" not-null="true" />
+        </property>
+        <property name="preciobolivar" type="big_decimal">
+            <column name="preciobolivar" precision="4" scale="1" />
+        </property>
+        <property name="valordeposito" type="big_decimal">
+            <column name="valordeposito" precision="8" />
+        </property>
+        <property name="tipodebolivar" type="string">
+            <column name="tipodebolivar" length="3" />
+        </property>
+        <property name="depositopesos" type="big_decimal">
+            <column name="depositopesos" precision="10" scale="1" />
+        </property>
+        <property name="tipodep" type="string">
+            <column name="tipodep" length="1" />
+        </property>
+        <property name="fechamod" type="timestamp">
+            <column name="fechamod" length="29" />
+        </property>
+        <property name="usuariomod" type="string">
+            <column name="usuariomod" length="15" />
+        </property>
+        <property name="asesor" type="string">
+            <column name="asesor" length="15" />
+        </property>
+        <property name="promotor" type="string">
+            <column name="promotor" length="15" />
+        </property>
+    </class>
+</hibernate-mapping>

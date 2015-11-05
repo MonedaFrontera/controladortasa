@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Gastos" table="gastos" optimistic-lock="version">
+        <id name="consecutivo" type="int">
+            <column name="consecutivo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="personal" class="com.monedafrontera.dto.Personal" fetch="select">
+            <column name="documento" length="15" />
+        </many-to-one>
+        <many-to-one name="tipogasto" class="com.monedafrontera.dto.Tipogasto" fetch="select">
+            <column name="tipogasto" length="2" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" />
+        </property>
+        <property name="valor" type="java.lang.Long">
+            <column name="valor" precision="14" scale="0" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="observacion" length="200" />
+        </property>
+        <property name="valorbolivar" type="big_decimal">
+            <column name="valorbolivar" precision="5" scale="3" />
+        </property>
+        <property name="fechamod" type="timestamp">
+            <column name="fechamod" length="29" />
+        </property>
+        <property name="usuariomod" type="string">
+            <column name="usuariomod" length="20" />
+        </property>
+        <one-to-one name="transferencia" class="com.monedafrontera.dto.Transferencia"></one-to-one>
+    </class>
+</hibernate-mapping>

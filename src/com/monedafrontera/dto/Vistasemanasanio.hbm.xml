@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Vistasemanasanio" table="vistasemanasanio" optimistic-lock="version">
+        <comment>vista de utilidad que contien las semanas del anio con la fecha inicio de las semana y la fechafin de la semana</comment>
+        <composite-id name="id" class="com.monedafrontera.dto.VistasemanasanioId">
+            <key-property name="numsemana" type="string">
+                <column name="numsemana" />
+            </key-property>
+            <key-property name="fechaini" type="date">
+                <column name="fechaini" length="13" />
+            </key-property>
+            <key-property name="fechafin" type="date">
+                <column name="fechafin" length="13" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

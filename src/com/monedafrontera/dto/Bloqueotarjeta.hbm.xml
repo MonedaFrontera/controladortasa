@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Bloqueotarjeta" table="bloqueotarjeta" optimistic-lock="version">
+        <id name="secuencia" type="int">
+            <column name="secuencia" />
+            <generator class="assigned" />
+        </id>
+        <property name="numerotarjeta" type="string">
+            <column name="numerotarjeta" length="16" />
+        </property>
+        <property name="consecutivo" type="java.lang.Integer">
+            <column name="consecutivo" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="observacion" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="29" />
+        </property>
+    </class>
+</hibernate-mapping>

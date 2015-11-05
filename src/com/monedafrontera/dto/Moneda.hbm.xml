@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Moneda" table="moneda" optimistic-lock="version">
+        <id name="codigomoneda" type="string">
+            <column name="codigomoneda" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreMoneda" type="string">
+            <column name="nombre_moneda" length="60" />
+        </property>
+        <set name="paridadmonedasForCodmonedadestino" table="paridadmoneda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codmonedadestino" length="5" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Paridadmoneda" />
+        </set>
+        <set name="paridadmonedasForCodmonedaorigen" table="paridadmoneda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codmonedaorigen" length="5" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Paridadmoneda" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Vistasaldodiariopromotor" table="vistasaldodiariopromotor" optimistic-lock="version">
+        <comment>saldos diarios de promotres</comment>
+        <composite-id name="id" class="com.monedafrontera.dto.VistasaldodiariopromotorId">
+            <key-property name="fecha" type="date">
+                <column name="fecha" length="13" />
+            </key-property>
+            <key-property name="documento" type="string">
+                <column name="documento" length="15" />
+            </key-property>
+            <key-property name="promotor" type="string">
+                <column name="promotor" />
+            </key-property>
+            <key-property name="saldoaldia" type="big_decimal">
+                <column name="saldoaldia" precision="131089" scale="0" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

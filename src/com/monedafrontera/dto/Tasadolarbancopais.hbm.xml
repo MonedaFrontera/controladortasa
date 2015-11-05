@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Tasadolarbancopais" table="tasadolarbancopais" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.TasadolarbancopaisId">
+            <key-property name="codbanco" type="string">
+                <column name="codbanco" length="3" />
+            </key-property>
+            <key-property name="codigopais" type="string">
+                <column name="codigopais" length="5" />
+            </key-property>
+            <key-property name="fecha" type="timestamp">
+                <column name="fecha" length="29" />
+            </key-property>
+        </composite-id>
+        <property name="tasacliente" type="java.lang.Integer">
+            <column name="tasacliente" precision="6" scale="0" />
+        </property>
+        <property name="tasaoficina" type="java.lang.Integer">
+            <column name="tasaoficina" precision="6" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

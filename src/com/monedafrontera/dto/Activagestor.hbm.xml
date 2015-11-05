@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Activagestor" table="activagestor" optimistic-lock="version">
+        <comment>Almacena el historico de la asignacion de los gestores a la activacion</comment>
+        <composite-id name="id" class="com.monedafrontera.dto.ActivagestorId">
+            <key-property name="consecutivo" type="int">
+                <column name="consecutivo" />
+            </key-property>
+            <key-property name="documento" type="string">
+                <column name="documento" length="15" />
+            </key-property>
+            <key-property name="fecha" type="timestamp">
+                <column name="fecha" length="29" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="activacion" class="com.monedafrontera.dto.Activacion" update="false" insert="false" fetch="select">
+            <column name="consecutivo" not-null="true">
+                <comment>Almacena el numero de la activacion</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="gestor" class="com.monedafrontera.dto.Gestor" update="false" insert="false" fetch="select">
+            <column name="documento" length="15" not-null="true">
+                <comment>Almacena el numero de documento del gestor que fue asignado</comment>
+            </column>
+        </many-to-one>
+        <property name="observacion" type="string">
+            <column name="observacion" length="2000">
+                <comment>Almacena la observacion que se realiza sobre la asignacion de la activacion al gestor</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

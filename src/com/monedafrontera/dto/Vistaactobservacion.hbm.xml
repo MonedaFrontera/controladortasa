@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Vistaactobservacion" table="vistaactobservacion" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.VistaactobservacionId">
+            <key-property name="tipo" type="string">
+                <column name="tipo" />
+            </key-property>
+            <key-property name="consecutivo" type="java.lang.Integer">
+                <column name="consecutivo" />
+            </key-property>
+            <key-property name="fecha" type="timestamp">
+                <column name="fecha" length="29" />
+            </key-property>
+            <key-property name="observacion" type="string">
+                <column name="observacion" length="2000" />
+            </key-property>
+            <key-property name="dato" type="string">
+                <column name="dato" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

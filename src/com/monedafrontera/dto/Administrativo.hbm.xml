@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Administrativo" table="administrativo" optimistic-lock="version">
+        <id name="documento" type="string">
+            <column name="documento" length="15" />
+            <generator class="foreign">
+                <param name="property">personal</param>
+            </generator>
+        </id>
+        <one-to-one name="personal" class="com.monedafrontera.dto.Personal" constrained="true"></one-to-one>
+        <property name="comision" type="big_decimal">
+            <column name="comision" precision="5" scale="3" />
+        </property>
+        <property name="cargo" type="string">
+            <column name="cargo" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

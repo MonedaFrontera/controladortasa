@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Porcentajecomisiontx" table="porcentajecomisiontx" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.PorcentajecomisiontxId">
+            <key-property name="codpais" type="string">
+                <column name="codpais" length="5" />
+            </key-property>
+            <key-property name="fechainicio" type="date">
+                <column name="fechainicio" length="13" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="pais" class="com.monedafrontera.dto.Pais" update="false" insert="false" fetch="select">
+            <column name="codpais" length="5" not-null="true" />
+        </many-to-one>
+        <property name="fechafin" type="date">
+            <column name="fechafin" length="13" />
+        </property>
+        <property name="porcentaje" type="big_decimal">
+            <column name="porcentaje" precision="4" />
+        </property>
+    </class>
+</hibernate-mapping>

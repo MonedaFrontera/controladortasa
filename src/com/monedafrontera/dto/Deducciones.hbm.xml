@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Deducciones" table="deducciones" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.DeduccionesId">
+            <key-property name="consecutivo" type="int">
+                <column name="consecutivo" />
+            </key-property>
+            <key-property name="descripcion" type="string">
+                <column name="descripcion" length="30" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="transaccion" class="com.monedafrontera.dto.Transaccion" update="false" insert="false" fetch="select">
+            <column name="consecutivo" not-null="true" />
+        </many-to-one>
+        <property name="valor" type="big_decimal">
+            <column name="valor" precision="7" scale="1" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="2" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

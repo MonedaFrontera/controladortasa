@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Gravamen" table="gravamen" optimistic-lock="version">
+        <id name="codigo" type="string">
+            <column name="codigo" length="2" />
+            <generator class="assigned" />
+        </id>
+        <property name="iva" type="java.lang.Boolean">
+            <column name="iva" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" />
+        </property>
+        <property name="porcentaje" type="big_decimal">
+            <column name="porcentaje" precision="5" scale="3" />
+        </property>
+        <set name="gravamenestablecimientos" table="gravamenestablecimiento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="gravamen" length="2" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Gravamenestablecimiento" />
+        </set>
+    </class>
+</hibernate-mapping>

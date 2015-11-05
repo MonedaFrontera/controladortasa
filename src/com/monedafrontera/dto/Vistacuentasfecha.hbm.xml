@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Vistacuentasfecha" table="vistacuentasfecha" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.VistacuentasfechaId">
+            <key-property name="nombrebanco" type="string">
+                <column name="nombrebanco" length="50" />
+            </key-property>
+            <key-property name="numcuenta" type="string">
+                <column name="numcuenta" length="25" />
+            </key-property>
+            <key-property name="nombre" type="string">
+                <column name="nombre" length="100" />
+            </key-property>
+            <key-property name="saldo" type="big_decimal">
+                <column name="saldo" precision="131089" scale="0" />
+            </key-property>
+            <key-property name="movimientos" type="big_decimal">
+                <column name="movimientos" precision="131089" scale="0" />
+            </key-property>
+            <key-property name="depositos" type="big_decimal">
+                <column name="depositos" precision="131089" scale="0" />
+            </key-property>
+            <key-property name="transferencias" type="big_decimal">
+                <column name="transferencias" precision="131089" scale="0" />
+            </key-property>
+            <key-property name="codbanco" type="string">
+                <column name="codbanco" length="3" />
+            </key-property>
+            <key-property name="fecha" type="timestamp">
+                <column name="fecha" length="29" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

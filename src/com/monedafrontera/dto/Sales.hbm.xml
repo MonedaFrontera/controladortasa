@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Sales" table="sales" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.SalesId">
+            <key-property name="year" type="java.lang.Integer">
+                <column name="year" />
+            </key-property>
+            <key-property name="month" type="java.lang.Integer">
+                <column name="month" />
+            </key-property>
+            <key-property name="qty" type="java.lang.Integer">
+                <column name="qty" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

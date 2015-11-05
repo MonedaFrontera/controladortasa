@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.AuditTransferencia" table="audit_transferencia" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.AuditTransferenciaId">
+            <key-property name="consecutivo" type="int">
+                <column name="consecutivo" />
+            </key-property>
+            <key-property name="preciobolivar" type="big_decimal">
+                <column name="preciobolivar" precision="5" />
+            </key-property>
+            <key-property name="tipobolivar" type="string">
+                <column name="tipobolivar" length="3" />
+            </key-property>
+            <key-property name="valorbolivar" type="java.lang.Long">
+                <column name="valorbolivar" precision="12" scale="0" />
+            </key-property>
+            <key-property name="numcuenta" type="string">
+                <column name="numcuenta" length="25" />
+            </key-property>
+            <key-property name="numcuentapromotor" type="string">
+                <column name="numcuentapromotor" length="25" />
+            </key-property>
+            <key-property name="documentopromotor" type="string">
+                <column name="documentopromotor" length="15" />
+            </key-property>
+            <key-property name="preciocompra" type="big_decimal">
+                <column name="preciocompra" precision="5" />
+            </key-property>
+            <key-property name="precioasesor" type="big_decimal">
+                <column name="precioasesor" precision="5" />
+            </key-property>
+            <key-property name="usuariomod" type="string">
+                <column name="usuariomod" length="20" />
+            </key-property>
+            <key-property name="fechamod" type="timestamp">
+                <column name="fechamod" length="22" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

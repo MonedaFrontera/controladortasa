@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Establecimiento" table="establecimiento" optimistic-lock="version">
+        <id name="codigounico" type="string">
+            <column name="codigounico" length="8" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bancocol" class="com.monedafrontera.dto.Bancocol" fetch="select">
+            <column name="codbanco" length="3" />
+        </many-to-one>
+        <many-to-one name="empresa" class="com.monedafrontera.dto.Empresa" fetch="select">
+            <column name="nit" length="20" />
+        </many-to-one>
+        <many-to-one name="pais" class="com.monedafrontera.dto.Pais" fetch="select">
+            <column name="codpais" length="5" />
+        </many-to-one>
+        <property name="nombreestable" type="string">
+            <column name="nombreestable" length="30" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="50" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="15" />
+        </property>
+        <property name="porcentaje" type="big_decimal">
+            <column name="porcentaje" precision="5" scale="3" />
+        </property>
+        <property name="iva" type="java.lang.Boolean">
+            <column name="iva" />
+        </property>
+        <property name="numcuenta" type="string">
+            <column name="numcuenta" length="20" />
+        </property>
+        <property name="facturar" type="java.lang.Boolean">
+            <column name="facturar" />
+        </property>
+        <set name="tasadolarpromotorparametros" table="tasadolarpromotorparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8">
+                    <comment>Codigo unico del establecimiento negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasadolarpromotorparametro" />
+        </set>
+        <set name="porcentcomisiontxparampromos" table="porcentcomisiontxparampromo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8">
+                    <comment>Codigo unico del establecimiento negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Porcentcomisiontxparampromo" />
+        </set>
+        <set name="porcentajecomisiontxparams" table="porcentajecomisiontxparam" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8">
+                    <comment>Codigo unico del establecimiento negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Porcentajecomisiontxparam" />
+        </set>
+        <set name="tasaeuropromotorparametros" table="tasaeuropromotorparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8">
+                    <comment>Codigo unico del establecimiento negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasaeuropromotorparametro" />
+        </set>
+        <set name="tasadolarparametros" table="tasadolarparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8">
+                    <comment>Codigo unico del establecimiento negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasadolarparametro" />
+        </set>
+        <set name="inventarios" table="inventario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Inventario" />
+        </set>
+        <set name="tasaeuroparametros" table="tasaeuroparametro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8">
+                    <comment>Codigo unico del establecimiento negociado</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Tasaeuroparametro" />
+        </set>
+        <set name="establecimientoprecios" table="establecimientoprecio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8" not-null="true">
+                    <comment>Codigo unico del establecimiento</comment>
+                </column>
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Establecimientoprecio" />
+        </set>
+        <set name="puntoestablecimientos" table="puntoestablecimiento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Puntoestablecimiento" />
+        </set>
+        <set name="transaccions" table="transaccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Transaccion" />
+        </set>
+        <set name="autovozs" table="autovoz" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Autovoz" />
+        </set>
+        <set name="gravamenestablecimientos" table="gravamenestablecimiento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codigounico" length="8" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Gravamenestablecimiento" />
+        </set>
+    </class>
+</hibernate-mapping>

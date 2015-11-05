@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.TarjetaviajeNew" table="tarjetaviaje_new" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.TarjetaviajeNewId">
+            <key-property name="numerotarjeta" type="string">
+                <column name="numerotarjeta" length="16" />
+            </key-property>
+            <key-property name="consecutivoviaje" type="int">
+                <column name="consecutivoviaje" />
+            </key-property>
+        </composite-id>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="estado" precision="1" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

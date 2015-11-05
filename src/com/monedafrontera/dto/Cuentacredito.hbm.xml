@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Cuentacredito" table="cuentacredito" optimistic-lock="version">
+        <id name="consecutivo" type="int">
+            <column name="consecutivo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cuenta" class="com.monedafrontera.dto.Cuenta" fetch="select">
+            <column name="numcuenta" length="25" />
+        </many-to-one>
+        <property name="valor" type="java.lang.Long">
+            <column name="valor" precision="10" scale="0" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="usuario" length="20" />
+        </property>
+        <property name="fechamod" type="timestamp">
+            <column name="fechamod" length="29" />
+        </property>
+        <property name="usuariomod" type="string">
+            <column name="usuariomod" length="20" />
+        </property>
+        <property name="tipo" type="java.lang.Byte">
+            <column name="tipo" precision="2" scale="0" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="observacion" length="500" />
+        </property>
+    </class>
+</hibernate-mapping>

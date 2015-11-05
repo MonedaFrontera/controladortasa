@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Bindb" table="bindb" optimistic-lock="version">
+        <id name="bin" type="string">
+            <column name="bin" length="8" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombrebanco" type="string">
+            <column name="nombrebanco" length="80" />
+        </property>
+        <property name="pais" type="string">
+            <column name="pais" length="70" />
+        </property>
+        <property name="ciudad" type="string">
+            <column name="ciudad" length="30" />
+        </property>
+        <property name="producto" type="string">
+            <column name="producto" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>

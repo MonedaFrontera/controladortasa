@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Dolartoday" table="dolartoday" optimistic-lock="version">
+        <id name="epoch" type="long">
+            <column name="epoch" />
+            <generator class="assigned" />
+        </id>
+        <property name="usdtransferencia" type="big_decimal">
+            <column name="usdtransferencia" precision="6" />
+        </property>
+        <property name="usdefectivo" type="big_decimal">
+            <column name="usdefectivo" precision="6">
+                <comment>A este valor le llaman implicito</comment>
+            </column>
+        </property>
+        <property name="usdpromedio" type="big_decimal">
+            <column name="usdpromedio" precision="6" />
+        </property>
+        <property name="usdpromedioreal" type="big_decimal">
+            <column name="usdpromedioreal" precision="6" />
+        </property>
+        <property name="usdsicad2" type="big_decimal">
+            <column name="usdsicad2" precision="6" />
+        </property>
+        <property name="usddolartoday" type="big_decimal">
+            <column name="usddolartoday" precision="6" />
+        </property>
+        <property name="eurtransferencia" type="big_decimal">
+            <column name="eurtransferencia" precision="6" />
+        </property>
+        <property name="eurefectivo" type="big_decimal">
+            <column name="eurefectivo" precision="6" />
+        </property>
+        <property name="eurpromedio" type="big_decimal">
+            <column name="eurpromedio" precision="6" />
+        </property>
+        <property name="eurpromedioreal" type="big_decimal">
+            <column name="eurpromedioreal" precision="6" />
+        </property>
+        <property name="eurdolartoday" type="big_decimal">
+            <column name="eurdolartoday" precision="6" />
+        </property>
+        <property name="bscolcompra" type="big_decimal">
+            <column name="bscolcompra" precision="6" />
+        </property>
+        <property name="bscolventa" type="big_decimal">
+            <column name="bscolventa" precision="6" />
+        </property>
+        <property name="goldrate" type="big_decimal">
+            <column name="goldrate" precision="6" />
+        </property>
+        <property name="usdvefrate" type="big_decimal">
+            <column name="usdvefrate" precision="6" scale="4" />
+        </property>
+        <property name="usdcolrate" type="big_decimal">
+            <column name="usdcolrate" precision="6" />
+        </property>
+        <property name="usdratetrm" type="big_decimal">
+            <column name="usdratetrm" precision="6" />
+        </property>
+        <property name="usdtrmfactor" type="big_decimal">
+            <column name="usdtrmfactor" precision="6" />
+        </property>
+        <property name="eurusdrate" type="big_decimal">
+            <column name="eurusdrate" precision="6" scale="5" />
+        </property>
+        <property name="usdsicad1" type="big_decimal">
+            <column name="usdsicad1" precision="6" />
+        </property>
+        <property name="usdcencoex" type="big_decimal">
+            <column name="usdcencoex" precision="6">
+                <comment>Cencoex</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

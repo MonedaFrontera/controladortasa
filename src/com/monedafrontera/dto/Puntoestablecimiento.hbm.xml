@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Puntoestablecimiento" table="puntoestablecimiento" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.PuntoestablecimientoId">
+            <key-property name="codigounico" type="string">
+                <column name="codigounico" length="8" />
+            </key-property>
+            <key-property name="codpuntoventa" type="string">
+                <column name="codpuntoventa" length="1" />
+            </key-property>
+            <key-property name="fechainicio" type="timestamp">
+                <column name="fechainicio" length="29" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="establecimiento" class="com.monedafrontera.dto.Establecimiento" update="false" insert="false" fetch="select">
+            <column name="codigounico" length="8" not-null="true" />
+        </many-to-one>
+        <many-to-one name="puntodeventa" class="com.monedafrontera.dto.Puntodeventa" update="false" insert="false" fetch="select">
+            <column name="codpuntoventa" length="1" not-null="true" />
+        </many-to-one>
+        <property name="fechafin" type="timestamp">
+            <column name="fechafin" length="29" />
+        </property>
+    </class>
+</hibernate-mapping>

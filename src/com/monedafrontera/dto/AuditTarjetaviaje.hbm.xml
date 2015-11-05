@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.AuditTarjetaviaje" table="audit_tarjetaviaje" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.AuditTarjetaviajeId">
+            <key-property name="numerotarjeta" type="string">
+                <column name="numerotarjeta" length="16" />
+            </key-property>
+            <key-property name="consecutivoviaje" type="int">
+                <column name="consecutivoviaje" />
+            </key-property>
+            <key-property name="estado" type="java.lang.Boolean">
+                <column name="estado" precision="1" scale="0" />
+            </key-property>
+            <key-property name="fechamod" type="timestamp">
+                <column name="fechamod" length="22" />
+            </key-property>
+            <key-property name="usuariomod" type="string">
+                <column name="usuariomod" length="20" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="tarjeta" class="com.monedafrontera.dto.Tarjeta" update="false" insert="false" fetch="select">
+            <column name="numerotarjeta" length="16" not-null="true" />
+        </many-to-one>
+        <many-to-one name="viaje" class="com.monedafrontera.dto.Viaje" update="false" insert="false" fetch="select">
+            <column name="consecutivoviaje" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

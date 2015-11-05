@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Personal" table="personal" optimistic-lock="version">
+        <id name="documento" type="string">
+            <column name="documento" length="15" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cargo" class="com.monedafrontera.dto.Cargo" fetch="select">
+            <column name="codcargo" length="2" />
+        </many-to-one>
+        <property name="tipodocumento" type="string">
+            <column name="tipodocumento" length="3" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="50" />
+        </property>
+        <property name="celular" type="string">
+            <column name="celular" length="15" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="15" />
+        </property>
+        <property name="pinbb" type="string">
+            <column name="pinbb" length="20" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="150" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="50" />
+        </property>
+        <property name="correoalternativo" type="string">
+            <column name="correoalternativo" length="50" />
+        </property>
+        <property name="fechanac" type="timestamp">
+            <column name="fechanac" length="29" />
+        </property>
+        <property name="ultmactualizacion" type="timestamp">
+            <column name="ultmactualizacion" length="22">
+                <comment>Ultima modificacion de lo datos del cliente</comment>
+            </column>
+        </property>
+        <property name="correosalerta" type="java.lang.Boolean">
+            <column name="correosalerta">
+                <comment>Este campo marca a la persona para que reciba correos de alerta del sistema de moneda frontera</comment>
+            </column>
+        </property>
+        <set name="gastoses" table="gastos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="documento" length="15" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Gastos" />
+        </set>
+        <set name="comisionhistoricos" table="comisionhistorico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="documento" length="15" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Comisionhistorico" />
+        </set>
+        <one-to-one name="gestor" class="com.monedafrontera.dto.Gestor"></one-to-one>
+        <one-to-one name="arrastrador" class="com.monedafrontera.dto.Arrastrador"></one-to-one>
+        <set name="saldos" table="saldo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="documento" length="15" not-null="true" />
+            </key>
+            <one-to-many class="com.monedafrontera.dto.Saldo" />
+        </set>
+        <one-to-one name="administrativo" class="com.monedafrontera.dto.Administrativo"></one-to-one>
+        <one-to-one name="promotor" class="com.monedafrontera.dto.Promotor"></one-to-one>
+        <one-to-one name="asesor" class="com.monedafrontera.dto.Asesor"></one-to-one>
+    </class>
+</hibernate-mapping>

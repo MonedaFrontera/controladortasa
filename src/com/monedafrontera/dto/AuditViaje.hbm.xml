@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.AuditViaje" table="audit_viaje" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.AuditViajeId">
+            <key-property name="consecutivo" type="int">
+                <column name="consecutivo" />
+            </key-property>
+            <key-property name="fechainicio" type="date">
+                <column name="fechainicio" length="13" />
+            </key-property>
+            <key-property name="fechafin" type="date">
+                <column name="fechafin" length="13" />
+            </key-property>
+            <key-property name="cupoinicialviajero" type="java.lang.Integer">
+                <column name="cupoinicialviajero" precision="5" scale="0" />
+            </key-property>
+            <key-property name="cupoinicialinternet" type="java.lang.Integer">
+                <column name="cupoinicialinternet" precision="5" scale="0" />
+            </key-property>
+            <key-property name="cupoviajero" type="java.lang.Integer">
+                <column name="cupoviajero" precision="8" scale="0" />
+            </key-property>
+            <key-property name="cupointernet" type="java.lang.Integer">
+                <column name="cupointernet" precision="8" scale="0" />
+            </key-property>
+            <key-property name="cedulatarjetahabiente" type="string">
+                <column name="cedulatarjetahabiente" length="15" />
+            </key-property>
+            <key-property name="fechamod" type="timestamp">
+                <column name="fechamod" length="22" />
+            </key-property>
+            <key-property name="usuariomod" type="string">
+                <column name="usuariomod" length="20" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

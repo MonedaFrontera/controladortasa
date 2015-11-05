@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Calendario" table="calendario" optimistic-lock="version">
+        <id name="fecha" type="date">
+            <column name="fecha" length="13" />
+            <generator class="assigned" />
+        </id>
+        <property name="anio" type="short">
+            <column name="anio" not-null="true" />
+        </property>
+        <property name="mes" type="short">
+            <column name="mes" not-null="true" />
+        </property>
+        <property name="dia" type="short">
+            <column name="dia" not-null="true" />
+        </property>
+        <property name="trimestre" type="short">
+            <column name="trimestre" not-null="true" />
+        </property>
+        <property name="diaDeSemana" type="short">
+            <column name="dia_de_semana" not-null="true">
+                <comment>muestra la fecha como numero dia de la semana Domingo (0) Sabado (6)</comment>
+            </column>
+        </property>
+        <property name="diaDeAnio" type="short">
+            <column name="dia_de_anio" not-null="true" />
+        </property>
+        <property name="semanaDeAnio" type="short">
+            <column name="semana_de_anio" not-null="true">
+                <comment>contiene el numero de la semana del anio a la que corresponde la fecha actual</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

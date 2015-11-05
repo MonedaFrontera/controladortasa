@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Porcentcomisiontxparampromo" table="porcentcomisiontxparampromo" optimistic-lock="version">
+        <id name="consecutivo" type="int">
+            <column name="consecutivo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="banco" class="com.monedafrontera.dto.Banco" fetch="select">
+            <column name="codbanco" length="3">
+                <comment>Codigo del banco negociado</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="establecimiento" class="com.monedafrontera.dto.Establecimiento" fetch="select">
+            <column name="codigounico" length="8">
+                <comment>Codigo unico del establecimiento negociado</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="franquicia" class="com.monedafrontera.dto.Franquicia" fetch="select">
+            <column name="codfranquicia" length="1">
+                <comment>Codigo de la franquicia negociada</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="pais" class="com.monedafrontera.dto.Pais" fetch="select">
+            <column name="codpais" length="5">
+                <comment>Almacena el codigo del pais</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="promotor" class="com.monedafrontera.dto.Promotor" fetch="select">
+            <column name="documento" length="15">
+                <comment>Almacena la cedula de documento del promotor</comment>
+            </column>
+        </many-to-one>
+        <property name="tipocupo" type="string">
+            <column name="tipocupo" length="1">
+                <comment>Tipo de cupo al que se aplica la liquidacion Viajero "V" Internet "I"</comment>
+            </column>
+        </property>
+        <property name="porcentaje" type="big_decimal">
+            <column name="porcentaje" precision="4">
+                <comment>Comision de descuento negociada para el promotor</comment>
+            </column>
+        </property>
+        <property name="fechainicio" type="timestamp">
+            <column name="fechainicio" length="29">
+                <comment>Vigencia inicial de la tasa</comment>
+            </column>
+        </property>
+        <property name="fechafin" type="timestamp">
+            <column name="fechafin" length="29">
+                <comment>Fecha fin de vigencia de la tasa</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

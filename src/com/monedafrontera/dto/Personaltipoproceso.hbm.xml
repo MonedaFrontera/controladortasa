@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/11/2015 11:46:50 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.monedafrontera.dto.Personaltipoproceso" table="personaltipoproceso" optimistic-lock="version">
+        <composite-id name="id" class="com.monedafrontera.dto.PersonaltipoprocesoId">
+            <key-property name="documento" type="string">
+                <column name="documento" length="15" />
+            </key-property>
+            <key-property name="fechainicio" type="timestamp">
+                <column name="fechainicio" length="29" />
+            </key-property>
+            <key-property name="puntodeventa" type="string">
+                <column name="puntodeventa" length="1" />
+            </key-property>
+            <key-property name="tipoproceso" type="string">
+                <column name="tipoproceso" length="2" />
+            </key-property>
+        </composite-id>
+        <property name="fechafin" type="date">
+            <column name="fechafin" length="13" />
+        </property>
+        <property name="porcentaje" type="big_decimal">
+            <column name="porcentaje" precision="5" scale="3" />
+        </property>
+    </class>
+</hibernate-mapping>
