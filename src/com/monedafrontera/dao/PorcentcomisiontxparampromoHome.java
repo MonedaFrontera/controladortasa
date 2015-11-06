@@ -16,25 +16,14 @@ import com.monedafrontera.dto.Porcentcomisiontxparampromo;
  * @see com.monedafrontera.dto.Porcentcomisiontxparampromo
  * @author Hibernate Tools
  */
-public class PorcentcomisiontxparampromoHome {
+public class PorcentcomisiontxparampromoHome extends BaseHibernateDAO{
 
 	private static final Log log = LogFactory.getLog(PorcentcomisiontxparampromoHome.class);
-
-	private final SessionFactory sessionFactory = getSessionFactory();
-
-	protected SessionFactory getSessionFactory() {
-		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
-		}
-	}
 
 	public void persist(Porcentcomisiontxparampromo transientInstance) {
 		log.debug("persisting Porcentcomisiontxparampromo instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			this.getSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -45,7 +34,7 @@ public class PorcentcomisiontxparampromoHome {
 	public void attachDirty(Porcentcomisiontxparampromo instance) {
 		log.debug("attaching dirty Porcentcomisiontxparampromo instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			this.getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -56,7 +45,7 @@ public class PorcentcomisiontxparampromoHome {
 	public void attachClean(Porcentcomisiontxparampromo instance) {
 		log.debug("attaching clean Porcentcomisiontxparampromo instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			this.getSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -67,7 +56,7 @@ public class PorcentcomisiontxparampromoHome {
 	public void delete(Porcentcomisiontxparampromo persistentInstance) {
 		log.debug("deleting Porcentcomisiontxparampromo instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			this.getSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -78,7 +67,7 @@ public class PorcentcomisiontxparampromoHome {
 	public Porcentcomisiontxparampromo merge(Porcentcomisiontxparampromo detachedInstance) {
 		log.debug("merging Porcentcomisiontxparampromo instance");
 		try {
-			Porcentcomisiontxparampromo result = (Porcentcomisiontxparampromo) sessionFactory.getCurrentSession()
+			Porcentcomisiontxparampromo result = (Porcentcomisiontxparampromo) this.getSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -91,7 +80,7 @@ public class PorcentcomisiontxparampromoHome {
 	public Porcentcomisiontxparampromo findById(int id) {
 		log.debug("getting Porcentcomisiontxparampromo instance with id: " + id);
 		try {
-			Porcentcomisiontxparampromo instance = (Porcentcomisiontxparampromo) sessionFactory.getCurrentSession()
+			Porcentcomisiontxparampromo instance = (Porcentcomisiontxparampromo) this.getSession()
 					.get("com.monedafrontera.dto.Porcentcomisiontxparampromo", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -108,7 +97,7 @@ public class PorcentcomisiontxparampromoHome {
 	public List findByExample(Porcentcomisiontxparampromo instance) {
 		log.debug("finding Porcentcomisiontxparampromo instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = this.getSession()
 					.createCriteria("com.monedafrontera.dto.Porcentcomisiontxparampromo").add(Example.create(instance))
 					.list();
 			log.debug("find by example successful, result size: " + results.size());

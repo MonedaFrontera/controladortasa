@@ -16,25 +16,14 @@ import com.monedafrontera.dto.Tasaeuropromotorparametro;
  * @see com.monedafrontera.dto.Tasaeuropromotorparametro
  * @author Hibernate Tools
  */
-public class TasaeuropromotorparametroHome {
+public class TasaeuropromotorparametroHome extends BaseHibernateDAO{
 
 	private static final Log log = LogFactory.getLog(TasaeuropromotorparametroHome.class);
-
-	private final SessionFactory sessionFactory = getSessionFactory();
-
-	protected SessionFactory getSessionFactory() {
-		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
-		}
-	}
-
+	
 	public void persist(Tasaeuropromotorparametro transientInstance) {
 		log.debug("persisting Tasaeuropromotorparametro instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			this.getSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -45,7 +34,7 @@ public class TasaeuropromotorparametroHome {
 	public void attachDirty(Tasaeuropromotorparametro instance) {
 		log.debug("attaching dirty Tasaeuropromotorparametro instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			this.getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -56,7 +45,7 @@ public class TasaeuropromotorparametroHome {
 	public void attachClean(Tasaeuropromotorparametro instance) {
 		log.debug("attaching clean Tasaeuropromotorparametro instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			this.getSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -67,7 +56,7 @@ public class TasaeuropromotorparametroHome {
 	public void delete(Tasaeuropromotorparametro persistentInstance) {
 		log.debug("deleting Tasaeuropromotorparametro instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			this.getSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -78,7 +67,7 @@ public class TasaeuropromotorparametroHome {
 	public Tasaeuropromotorparametro merge(Tasaeuropromotorparametro detachedInstance) {
 		log.debug("merging Tasaeuropromotorparametro instance");
 		try {
-			Tasaeuropromotorparametro result = (Tasaeuropromotorparametro) sessionFactory.getCurrentSession()
+			Tasaeuropromotorparametro result = (Tasaeuropromotorparametro) this.getSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -91,7 +80,7 @@ public class TasaeuropromotorparametroHome {
 	public Tasaeuropromotorparametro findById(int id) {
 		log.debug("getting Tasaeuropromotorparametro instance with id: " + id);
 		try {
-			Tasaeuropromotorparametro instance = (Tasaeuropromotorparametro) sessionFactory.getCurrentSession()
+			Tasaeuropromotorparametro instance = (Tasaeuropromotorparametro) this.getSession()
 					.get("com.monedafrontera.dto.Tasaeuropromotorparametro", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -108,7 +97,7 @@ public class TasaeuropromotorparametroHome {
 	public List findByExample(Tasaeuropromotorparametro instance) {
 		log.debug("finding Tasaeuropromotorparametro instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = this.getSession()
 					.createCriteria("com.monedafrontera.dto.Tasaeuropromotorparametro").add(Example.create(instance))
 					.list();
 			log.debug("find by example successful, result size: " + results.size());
