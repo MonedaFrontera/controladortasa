@@ -50,7 +50,7 @@ public class ServicioPorcentajeComisiontxParamPromo {
 			
 			respuesta="El Porcentaje de Comisión negociado al Promotor: "+pComision.getPromotor().getPersonal().getNombre()+
 					" "+pComision.getPromotor().getPersonal().getApellido()+
-					" se cerró correctamente para "+pComision.getPais().getNombre()+" el día: "+pComision.getFechafin();
+					" se cerró correctamente para "+pComision.getPais().getNombre()+" el día: "+sdf.format(pComision.getFechafin());
 			
 			this.porcentaje.merge(pComision);
 			te.commit();

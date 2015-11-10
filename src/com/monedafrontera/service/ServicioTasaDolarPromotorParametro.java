@@ -49,7 +49,7 @@ public class ServicioTasaDolarPromotorParametro {
 			
 			respuesta="La tasa de dólar negociada al Promotor: "+tasadolarpromotor.getPromotor().getPersonal().getNombre()+
 					" "+tasadolarpromotor.getPromotor().getPersonal().getApellido()+
-					" se cerró correctamente para "+tasadolarpromotor.getPais().getNombre()+" el día: "+tasadolarpromotor.getFechafin();
+					" se cerró correctamente para "+tasadolarpromotor.getPais().getNombre()+" el día: "+sdf.format(tasadolarpromotor.getFechafin());
 			
 			this.tasadolar.merge(tasadolarpromotor);
 			te.commit();

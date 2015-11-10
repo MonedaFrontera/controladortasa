@@ -49,7 +49,7 @@ public class ServicioTasaEuroPromotorParametro {
 			
 			respuesta="La tasa de Euro negociada al Promotor: "+tasaeuropromotor.getPromotor().getPersonal().getNombre()+
 					" "+tasaeuropromotor.getPromotor().getPersonal().getApellido()+
-					" se cerró correctamente para "+tasaeuropromotor.getPais().getNombre()+" el día: "+tasaeuropromotor.getFechafin();
+					" se cerró correctamente para "+tasaeuropromotor.getPais().getNombre()+" el día: "+sdf.format(tasaeuropromotor.getFechafin());
 			
 			this.tasaeuro.merge(tasaeuropromotor);
 			te.commit();
